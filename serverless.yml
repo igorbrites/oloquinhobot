@@ -1,0 +1,19 @@
+service: oloquinhobot
+
+package:
+  exclude:
+    - venv/**
+
+provider:
+  name: aws
+  runtime: python3.7
+  environment:
+    TELEGRAM_TOKEN: ${env:TELEGRAM_TOKEN}
+
+functions:
+  oloquinho:
+    handler: handler.oloquinho
+    events:
+      - http:
+          path: /
+          method: post
